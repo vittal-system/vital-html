@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vital Premium Water - Login</title>
+    <!-- Font Awesome for exact User & Key input icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            
+            /* Background image provided by the user */
+            background: url('https://camhappymart.com/storage/app/public/product/2023-10-10-652516e43158d.png') no-repeat center center;
+            background-size: contain;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+
+        /* 
+           Simulates the soft, bright overlay ambient filter present in the original layout,
+           making the glassmorphism blur blend realistically.
+        */
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.45);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Centered Frosted Glass Card Container */
+        .login-card {
+            position: relative;
+            z-index: 5;
+            width: 90%;
+            max-width: 440px;
+            
+            /* Glassmorphism Configuration */
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(22px) saturate(160%);
+            -webkit-backdrop-filter: blur(22px) saturate(160%);
+            
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 45px 40px 35px 40px;
+            box-shadow: 0 12px 36px rgba(120, 145, 170, 0.18);
+        }
+
+        /* Logo Configuration */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .logo-img {
+            width: auto;
+            height: 70px; /* Sized perfectly to mirror original layout dimensions */
+            object-fit: contain;
+        }
+
+        /* Input Form Groups */
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-label {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: #1a1a1a; /* Clean solid contrast matching original labels */
+            margin-bottom: 8px;
+        }
+
+        .form-label i {
+            margin-right: 6px;
+            font-size: 13px;
+            color: #2b2b2b;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 11px 12px;
+            font-size: 15px;
+            color: #333333;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #a3b8cc; /* Soft border accent coloring */
+            border-radius: 4px;
+            outline: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .form-input:focus {
+            background: #ffffff;
+            border-color: #5aa1e3;
+            box-shadow: 0 0 0 3px rgba(90, 161, 227, 0.2);
+        }
+
+        .form-input::placeholder {
+            color: #a4b3c1;
+        }
+
+        /* Custom alignment for Remember Me checkbox layout */
+        .remember-wrapper {
+            display: flex;
+            align-items: center;
+            margin-top: 24px;
+            margin-bottom: 28px;
+            cursor: pointer;
+            user-select: none;
+            font-size: 14px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .remember-wrapper input {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            border: 1px solid #a3b8cc;
+            border-radius: 4px;
+            accent-color: #5aa1e3; /* Themes browser default elements to exact hex spec */
+            cursor: pointer;
+        }
+
+        /* Match for the primary brand Blue Button */
+        .submit-login-btn {
+            width: 100%;
+            padding: 13px 14px;
+            background-color: #5aa1e3; 
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(90, 161, 227, 0.15);
+            transition: background-color 0.2s ease;
+        }
+
+        .submit-login-btn:hover {
+            background-color: #4893da;
+        }
+
+        /* Centered Bottom Anchor Navigation */
+        .options-wrapper {
+            text-align: center;
+            margin-top: 22px;
+        }
+
+        .options-wrapper a {
+            font-size: 13px;
+            color: #4893da;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .options-wrapper a:hover {
+            text-decoration: underline;
+        }
+
+        /* Document Footer Legal Info */
+        .document-footer {
+            position: absolute;
+            bottom: 20px;
+            z-index: 5;
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            width: 100%;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <!-- Logo Header incorporating your direct logo asset string -->
+        <div class="logo-container">
+            <img class="logo-img" src="https://www.vital.com.kh/wp-content/uploads/2020/07/Vital-Logo_en.png" alt="Vital Premium Water">
+        </div>
+
+        <!-- Authentication Form Wrapper -->
+        <form onsubmit="event.preventDefault();">
+            <div class="form-group">
+                <label class="form-label" for="user">
+                    <i class="fa-solid fa-user"></i>Username
+                </label>
+                <input class="form-input" type="text" id="user" placeholder="Username" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="pass">
+                    <i class="fa-solid fa-key"></i>Password
+                </label>
+                <input class="form-input" type="password" id="pass" placeholder="Password" required>
+            </div>
+
+            <label class="remember-wrapper">
+                <input type="checkbox" id="remember">
+                Remember Me
+            </label>
+
+            <button type="submit" class="submit-login-btn">Login</button>
+
+            <div class="options-wrapper">
+                <a href="#">I forgot my password</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Page Footer Attributions -->
+    <footer class="document-footer">
+        © 2025 ICT — All rights reserved.
+    </footer>
+
+</body>
+</html>
